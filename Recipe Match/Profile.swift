@@ -89,10 +89,10 @@ class Profile: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, U
         globalVariables.userDetails?.setDietPreference(newDietPreference: currDietPreference)
         globalVariables.userDetails?.setDietRestriction(newDietRestriction: currDietRestriction)
         
-        var user = Auth.auth().currentUser;
-        var uid = user?.uid
+        let user = Auth.auth().currentUser;
+        guard let uid = user?.uid else {return}
         
-        globalVariables.userDetails?.updateProfileDetails(userID: uid!)
+        globalVariables.userDetails?.updateProfileDetails(userID: uid)
         
         self.createAlert(title: "Successfully updated!", message: "User details have been updated for your account.")
         
