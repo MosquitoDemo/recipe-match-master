@@ -21,11 +21,11 @@ class Search: UIViewController {
         
         self.navigationItem.setHidesBackButton(true, animated:true);
 
-        var user = Auth.auth().currentUser;
-        var email = user?.email
-        var uid = user?.uid
+        let user = Auth.auth().currentUser;
+        guard let email = user?.email else {return}
+        guard let uid = user?.uid else {return}
         
-        globalVariables.userDetails = UserDetails(userEmail: email!, userID: uid!)
+        globalVariables.userDetails = UserDetails(userEmail: email, userID: uid)
         // Do any additional setup after loading the view.
         
     }

@@ -65,6 +65,7 @@ class Dish {
     
     // function to retrieve 'dietPreferenceLabels' field
     func getDietPreferences() -> [String] {
+        
         return dietPreferenceLabels
     }
     
@@ -74,3 +75,4 @@ class Dish {
     }
     
 }
+

@@ -9,7 +9,6 @@
 import Foundation
 
 class MadeDish: Dish {
-    
     // declaration of variables needed to know date of creation
     var day: Int = 0
     var month: Int = 0
@@ -17,7 +16,6 @@ class MadeDish: Dish {
     
     // constructor that initalizes dish
     init(nameResult: String, servingsResult: Int, recipeURLResult: String, imageURLResult: String, caloriesResult: Int, ingredientResults: [String], dietPreferenceResult: [String], dietRestrictionResult: [String], givenDay: Int, givenMonth: Int, givenYear: Int) {
-        
         // calls upon the superclass constructor
         super.init(nameResult: nameResult, servingsResult: servingsResult, recipeURLResult: recipeURLResult, imageURLResult: imageURLResult, caloriesResult: caloriesResult, ingredientResults: ingredientResults, dietPreferenceResult: dietPreferenceResult, dietRestrictionResult: dietRestrictionResult)
         day = givenDay

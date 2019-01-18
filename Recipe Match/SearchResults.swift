@@ -253,7 +253,7 @@ class SearchResults: UIViewController, UITableViewDataSource, UITableViewDelegat
         }
         
         // reorganize dishes based on their relevance scores
-        for i in 0...(globalVariables.dishesResults.count - 1) {
+        for _ in 0...(globalVariables.dishesResults.count - 1) {
             var highScore: Int = scores[0]
             var highPos: Int = 0
             for i in 0...(globalVariables.dishesResults.count - 1) {

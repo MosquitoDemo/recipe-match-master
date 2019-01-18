@@ -25,7 +25,7 @@ class UserDetails {
         
         var ref: DatabaseReference!
         ref = Database.database().reference().child("Users/\(userID)")
-        
+        print(ref)
         // saving key details locally
         email = userEmail
         let defaults = UserDefaults.standard
@@ -132,12 +132,36 @@ class UserDetails {
         
         let databaseRef = Database.database().reference().child("Users").child("\(uid!)").child("MadeDishes")
         
-        let madeDishDictionary = ["Name": madeDish?.getName(), "Number of Servings": madeDish?.getNumServings(), "Recipe URL": madeDish?.getRecipeURL(), "Image URL": madeDish?.getImageURL(), "Calories": madeDish?.getCalories(), "Ingredients": madeDish?.getIngredients(), "Diet Preferences": madeDish?.getDietPreferences(), "Diet Restrictions": madeDish?.getDietRestrictions(), "Day": madeDish?.getDay(), "Month": madeDish?.getMonth(), "Year": madeDish?.getYear()] as [String : Any]
+        let name = madeDish?.getName() ?? ""
+        let numServings = madeDish?.getNumServings() ?? 0
+        let recipeURL = madeDish?.getRecipeURL() ?? ""
+        let imageURL = madeDish?.getImageURL() ?? ""
+        let category = madeDish?.getCalories() ?? 0
+        let ingredients = madeDish?.getIngredients() ?? [String]()
+        let preferences = madeDish?.getDietPreferences() ?? [String]()
+        let restrictions = madeDish?.getDietRestrictions() ?? [String]()
+        let day = madeDish?.getDay() ?? 0
+        let month = madeDish?.getMonth() ?? 0
+        let year = madeDish?.getYear() ?? 0
+        
+        let madeDishDictionary = [
+            "Name": name,
+            "Number of Servings": numServings,
+            "Recipe URL": recipeURL,
+            "Image URL": imageURL,
+            "Calories": category,
+            "Ingredients": ingredients,
+            "Diet Preferences": preferences,
+            "Diet Restrictions": restrictions,
+            "Day": day,
+            "Month": month,
+            "Year": year
+            ] as [String : Any]
         
         databaseRef.childByAutoId().setValue(madeDishDictionary) {
             (error, ref) in
-            if error != nil {
-                print(error)
+            if let errorx = error{
+                print(errorx)
             } else {
                 print("Successfully made dish!")
             }
@@ -156,12 +180,29 @@ class UserDetails {
         
         let databaseRef = Database.database().reference().child("Users").child("\(uid!)").child("SavedDishes")
         
-        let savedDishDictionary = ["Name": savedDish?.getName(), "Number of Servings": savedDish?.getNumServings(), "Recipe URL": savedDish?.getRecipeURL(), "Image URL": savedDish?.getImageURL(), "Calories": savedDish?.getCalories(), "Ingredients": savedDish?.getIngredients(), "Diet Preferences": savedDish?.getDietPreferences(), "Diet Restrictions": savedDish?.getDietRestrictions()] as [String : Any]
+        let name = savedDish?.getName() ?? ""
+        let numServings = savedDish?.getNumServings() ?? 0
+        let recipeURL = savedDish?.getRecipeURL() ?? ""
+        let imageURL = savedDish?.getImageURL() ?? ""
+        let category = savedDish?.getCalories() ?? 0
+        let ingredients = savedDish?.getIngredients() ?? [String]()
+        let preferences = savedDish?.getDietPreferences() ?? [String]()
+        let restrictions = savedDish?.getDietRestrictions() ?? [String]()
+        let savedDishDictionary = [
+            "Name": name,
+            "Number of Servings": numServings,
+            "Recipe URL": recipeURL,
+            "Image URL": imageURL,
+            "Calories": category,
+            "Ingredients": ingredients,
+            "Diet Preferences": preferences,
+            "Diet Restrictions": restrictions
+            ] as [String : Any]
         
         databaseRef.childByAutoId().setValue(savedDishDictionary) {
             (error, ref) in
-            if error != nil {
-                print(error)
+            if let errorx = error{
+                print(errorx)
             } else {
                 print("Successfully saved dish!")
             }
